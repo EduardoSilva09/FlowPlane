@@ -3,17 +3,17 @@ using FlowPlane.Infrastructure.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace FlowPlane.Application.Queries.GetUser
+namespace FlowPlane.Application.Queries.GetUserById
 {
-    public class GetUserQueryHandler : IRequestHandler<GetUserQuery, UserViewModel>
+    public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserViewModel>
     {
         private readonly FlowPlaneDBContext _dbContext;
-        public GetUserQueryHandler(FlowPlaneDBContext dbContext)
+        public GetUserByIdQueryHandler(FlowPlaneDBContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<UserViewModel> Handle(GetUserQuery request, CancellationToken cancellationToken)
+        public async Task<UserViewModel> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
             var user = await _dbContext.Users.SingleOrDefaultAsync(u => u.Id == request.Id);
 
