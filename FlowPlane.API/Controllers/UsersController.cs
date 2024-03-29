@@ -1,5 +1,5 @@
 using FlowPlane.Application.Commands.CreateUser;
-using FlowPlane.Application.Queries.GetUser;
+using FlowPlane.Application.Queries.GetUserById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,7 +26,7 @@ namespace FlowPlane.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var query = new GetUserQuery(id);
+            var query = new GetUserByIdQuery(id);
 
             var user = await _mediator.Send(query);
 
