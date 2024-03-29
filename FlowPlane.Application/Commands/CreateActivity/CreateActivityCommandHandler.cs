@@ -1,9 +1,10 @@
 using FlowPlane.Core.Entities;
 using FlowPlane.Core.Repositories;
+using MediatR;
 
 namespace FlowPlane.Application.Commands.CreateActivity
 {
-    public class CreateActivityCommandHandler
+    public class CreateActivityCommandHandler : IRequestHandler<CreateActivityCommand, int>
     {
         private readonly IActivityRepository _ActivityRepository;
         public CreateActivityCommandHandler(IActivityRepository ActivityRepository)

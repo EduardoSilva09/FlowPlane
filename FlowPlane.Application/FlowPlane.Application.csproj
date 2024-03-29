@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FlowPlane.Core\FlowPlane.Core.csproj" />
+    <ProjectReference Include="..\FlowPlane.Infrastructure\FlowPlane.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
