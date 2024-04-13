@@ -1,4 +1,5 @@
 using FlowPlane.Application.Commands.CreateActivity;
+using FlowPlane.Application.Queries.GetActivityById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +22,21 @@ namespace FlowPlane.API.Controllers
             var id = await _mediator.Send(command);
 
             return Created();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var query = new GetActivityByIdQuery(id);
+
+            var activity = await _mediator.Send(query);
+
+            if (activity == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(activity);
         }
     }
 }
